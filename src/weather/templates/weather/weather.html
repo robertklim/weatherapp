@@ -26,19 +26,23 @@
             </form>
         </div>
     </nav>
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <div class="card border-secondary mb-3 center" style="max-width: 18rem; margin: 0 auto; min-width: 30%;">
-            <div class="card-header">
-                {{ city_weather.city }}
-                <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto" style="display: flex; flex-wrap: wrap;">
+        
+        {% for city_weather in weather_data %}    
+            <div class="card border-secondary mb-3" style="width: 30%; min-width: 200px; margin: 4px 8px;">
+                <div class="card-header">
+                    {{ city_weather.city }}
+                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ city_weather.temperature }} &#8451;          
+                    </h5>
+                    <p class="card-text">{{ city_weather.description }}</p>
+                </div>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    {{ city_weather.temperature }} &#8451;          
-                </h5>
-                <p class="card-text">{{ city_weather.description }}</p>
-            </div>
-        </div>
+        {% endfor %}
+    
     </div>
     
 
